@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Programming Languages</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="logo">LearnPro</div>
+    <div class="user-profile" id="user-profile">
+      <img src="profile.png" alt="User">
+      <div class="profile-dropdown" id="profile-dropdown">
+        <!-- Profile Info -->
+        <div class="profile-info">
+          <h3>Satya Sailesh</h3>
+          <p>Hi,Satya Sai Sailesh</p>
+          <button>Edit Profile</button>
+        </div>
+
+        <!-- Progress Stats -->
+        <div class="progress-stats">
+          <h4>tasks completed</h4>
+          <h4>lectures completed: 1</h4>
+         
+        </div>
+
+        <!-- Badges Section -->
+        <div class="badges-section">
+          <h4>Badges</h4>
+          <p>Locked Badge: learnpro Challenge</p>
+        </div>
+
+        <!-- Activity Section -->
+        <div class="activity-section">
+          <h4>Activity</h4>
+          <p>7 topics covered </p>
+          <p>Total active days: 3</p>
+          <p>Max streak: 2</p>
+          <div class="monthly-activity">
+            <h5>Monthly Activity</h5>
+            <div class="month-grid">
+              <div class="month">Mar</div>
+              <div class="month">Apr</div>
+              <div class="month">May</div>
+              <div class="month">Jun</div>
+              <div class="month">Jul</div>
+              <div class="month">Aug</div>
+              <div class="month">Sep</div>
+              <div class="month">Oct</div>
+              <div class="month">Nov</div>
+              <div class="month">Dec</div>
+              <div class="month">Jan</div>
+              <div class="month">Feb</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Navbar -->
+  <aside class="side-navbar" id="side-navbar">
+    <div class="profile-section">
+      <img src="profile.png" alt="Profile">
+      <h3>Kotla Satya Sai Sailesh</h3>
+      <p>Beginner</p>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-book"></i> Blogs <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="#">python sheet</a></li>
+          <li><a href="#">java sheet</a></li>
+          <li><a href="#">c++ sheet</a></li>
+          <li><a href="#">important programs sheet</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fas fa-save"></i> Saved Notes</a></li>
+    </ul>
+
+    <div class="upgrade-section">
+      <button class="upgrade-btn"><i class="fas fa-crown"></i> Upgrade to Plus</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <h4>Your Progress</h4>
+      <div class="progress-bar">
+        <div class="progress" style="width: 60%;"></div>
+      </div>
+      <p>60% Completed</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content" id="main-content">
+    <header>
+      <h1>Learn Programming Languages</h1>
+      <p>Master the skills you need to become a pro developer!</p>
+    </header>
+
+    <!-- Language Grid -->
+    <section class="languages">
+      <h2>Choose a Language to Learn</h2>
+      <div class="language-grid">
+        <div class="language-card">
+          <i class="fab fa-python"></i>
+          <h3>Python</h3>
+          <p>Start with Python basics.</p>
+          <button>Start Learning</button>
+        </div>
+        <div class="language-card">
+          <i class="fab fa-js-square"></i>
+          <h3>JavaScript</h3>
+          <p>Master the web with JS.</p>
+          <button>Start Learning</button>
+        </div>
+        <div class="language-card">
+          <i class="fab fa-html5"></i>
+          <h3>HTML & CSS</h3>
+          <p>Build beautiful websites.</p>
+          <button>Start Learning</button>
+        </div>
+        <!-- Add more languages here -->
+        <div class="language-card">
+            <i class="fab fa-html5"></i>
+            <h3>java</h3>
+            <p>start with java basics.</p>
+            <button>Start Learning</button>
+          </div>
+          <div class="language-card">
+            <i class="fab fa-html5"></i>
+            <h3>c++</h3>
+            <p>start with c++ basics.</p>
+            <button>Start Learning</button>
+          </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Loading Animation -->
+  <div class="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
