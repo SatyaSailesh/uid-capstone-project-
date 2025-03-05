@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS Learning Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">OOPS Hub</div>
+        <div class="profile"><i class="fa-solid fa-user"></i></div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <i class="fa-solid fa-code"></i>
+            <h3>OOP Basics</h3>
+            <p>Learn the fundamentals of Object-Oriented Programming.</p>
+            <button class="button">Try it free →</button>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-gears"></i>
+            <h3>Design Patterns</h3>
+            <p>Master essential design patterns used in software development.</p>
+            <button class="button">Try it free →</button>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3>Advanced Concepts</h3>
+            <p>Dive deep into polymorphism, inheritance, and more.</p>
+            <button class="button">Try it free →</button>
+        </div>
+    </div>
+</body>
+</html>
