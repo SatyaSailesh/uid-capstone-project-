@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Sheet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    }
+    .sidebar {
+      width: 25%;
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+    .main-content {
+      width: 75%;
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+    .initial {
+         font-weight: bold;
+           text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 165, 0, 0.7); /
+          }
+
+          .text {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 8px rgba(255, 165, 0, 0.5); 
+             }
+         .initial {
+           margin-right: -2px; 
+             }
+           .text{
+
+             margin-left: -2px;
+              }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+    }
+    .user-info {
+      text-align: center;
+    }
+    .user-info h2 {
+      color: #f0b400;
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+    .user-info p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .social-links a {
+      color: #58a6ff;
+      font-size: 1.2em;
+    }
+    .social-links a:hover {
+      color: #1f6feb;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .toggle-container label {
+      font-size: 0.9em;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #ff4444;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    .progress-section {
+      margin-bottom: 20px;
+    }
+    .progress-section h3 {
+      color: #f0b400;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .progress-circles {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .circle {
+      width: 100px; 
+      height: 100px; 
+      position: relative;
+    }
+    .circle svg {
+      width: 100%;
+      height: 100%;
+    }
+    .circle .bg {
+      fill: none;
+      stroke: #21262d;
+      stroke-width: 10;
+    }
+    .circle .progress {
+      fill: none;
+      stroke: #f4b400;
+      stroke-width: 10;
+      stroke-linecap: round;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    .circle .progress:hover{
+        box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+    }
+    .circle span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.9em;
+    }
+    .stats-section {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat h4 {
+      color: #f0b400;
+      font-size: 1em;
+      margin-bottom: 5px;
+    }
+    .stat p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    .topics-section h3 {
+      color: #f0b400;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .topic {
+      background-color: #21262d;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .topic p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #58a6ff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .mode-toggle:hover {
+      background-color: #1f6feb;
+    }
+    .logo {
+      font-family: "Kinescope", cursive;
+      font-size: 2.5rem;
+      color: #f4b400;
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .logo:hover {
+      background-color: rgba(31, 31, 31, 1);
+      
+    }
+    .logo img {
+      width: 40px;
+      height: auto;
+      margin-right: 10px;
+      vertical-align: middle;
+      border-radius: 10px;
+    }
+     .logo img:hover{
+        outline: 1px solid #f4b400;
+        box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+     }
+    body.light-mode {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .light-mode .sidebar,
+    .light-mode .main-content {
+      background-color: #fff;
+    }
+    .light-mode .topic {
+      background-color: #e0e0e0;
+    }
+    .light-mode .logo {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar, .main-content {
+        width: 100%;
+      }
+      .progress-circles {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .stats-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <a href="indecx1.html"><img src="logo.png" alt="Logo"/></a>
+    <span class="initial">L</span>
+    <span class="text">earn</span>
+    <span class="initial">P</span>
+    <span class="text">ro</span>
+  </div>
+
+  <button class="mode-toggle" onclick="toggleMode()">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="user-info">
+        <img src="profile.png" alt="Profile Picture" class="profile-pic">
+        <h2>Kotla Satya Sai Sailesh</h2>
+        <p>#Satya_Sailesh</p>
+        <div class="toggle-container">
+          <label>Public</label>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.google.com"><i class="fas fa-globe"></i></a>
+        </div>
+        <p><i class="fas fa-envelope"></i> kotla.sailesh2006@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Tamil Nadu</p>
+        <p><i class="fas fa-university"></i> AMRITA VISWA VIDYAPEETHAM</p>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="progress-section">
+        <h3>Progress</h3>
+        <div class="progress-circles">
+          <div class="circle">
+            <svg>
+              <circle class="bg" cx="50" cy="50" r="45"></circle> 
+              <circle class="progress" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="254"></circle> <!-- Adjusted stroke-dasharray -->
+            </svg>
+            <span>10%</span>
+          </div>
+          <div class="circle">
+            <svg>
+              <circle class="bg" cx="50" cy="50" r="45"></circle>
+              <circle class="progress" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="234"></circle>
+            </svg>
+            <span>20%</span>
+          </div>
+          <div class="circle">
+            <svg>
+              <circle class="bg" cx="50" cy="50" r="45"></circle>
+              <circle class="progress" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+            </svg>
+            <span>0%</span>
+          </div>
+          <div class="circle">
+            <svg>
+              <circle class="bg" cx="50" cy="50" r="45"></circle>
+              <circle class="progress" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="242"></circle>
+            </svg>
+            <span>15%</span>
+          </div>
+          <div class="circle">
+            <svg>
+              <circle class="bg" cx="50" cy="50" r="45"></circle>
+              <circle class="progress" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="144"></circle>
+            </svg>
+            <span>50%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stat">
+          <h4>Python</h4>
+          <p>20 Topics</p>
+        </div>
+        <div class="stat">
+          <h4>Java</h4>
+          <p>15 Topics</p>
+        </div>
+        <div class="stat">
+          <h4>C++</h4>
+          <p>20 Topics</p>
+        </div>
+        <div class="stat">
+            <h4>C</h4>
+            <p>18 Topics</p>
+          </div>
+          <div class="stat">
+            <h4>html,css & js</h4>
+            <p>15 Topics</p>
+          </div>
+         
+      </div>
+
+
+      <div class="topics-section">
+        <h3>Topics Covered (on LearnPro)</h3>
+        <div class="topics-grid">
+          <div class="topic"><p>Arrays x16</p></div>
+          <div class="topic"><p>Maths x11</p></div>
+          <div class="topic"><p>Sorting x9</p></div>
+          <div class="topic"><p>Recursion x5</p></div>
+          <div class="topic"><p>Hashing x4</p></div>
+          <div class="topic"><p>String x1</p></div>
+          <div class="topic"><p>Two Pointer x1</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const button = document.querySelector('.mode-toggle');
+      const icon = button.querySelector('i');
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+    }
+  </script>
+</body>
+</html>
