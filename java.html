@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Learning Sheet </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f0b400;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: #58a6ff;
+        }
+        .stop-timer {
+            background-color: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stop-timer:hover {
+            background-color: #cc0000;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #21262d;
+            height: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #58a6ff;
+            transition: width 0.5s;
+        }
+        .sheet {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #21262d;
+        }
+        th {
+            background-color: #21262d;
+            color: #f0b400;
+            font-size: 1.2em;
+        }
+        td {
+            background-color: #1c2526;
+            transition: background-color 0.3s;
+        }
+        td:hover {
+            background-color: #2d333b;
+        }
+        .checkbox {
+            margin-right: 10px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .topic-title {
+            font-weight: bold;
+            color: #c9d1d9;
+            cursor: pointer;
+        }
+        .resource-icon {
+            margin-right: 5px;
+        }
+        .youtube-icon {
+            color: #ff0000;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #58a6ff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .mode-toggle:hover {
+            background-color: #1f6feb;
+        }
+        .initial {
+         font-weight: bold;
+           text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 165, 0, 0.7); 
+          }
+
+          .text {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 8px rgba(255, 165, 0, 0.5); 
+             }
+         .initial {
+           margin-right: -2px; 
+             }
+           .text{
+
+             margin-left: -2px;
+              }
+        .logo {
+            font-family: "Kinescope", cursive; 
+            font-size: 2.5rem; 
+             color: #f4b400; 
+             background-color: rgba(31, 31, 31, 0.9); 
+             padding: 5px 10px;
+             display: inline-block;
+             border-radius: 5px; 
+              transition: background 0.3s ease; 
+          }
+
+         .logo:hover {
+           background-color: rgba(31, 31, 31, 1); 
+           } 
+           .logo img {
+            width: 40px; 
+            height: auto;
+           margin-right: 10px; 
+            vertical-align: middle;
+            border-radius: 10px;
+             }
+             .logo img:hover{
+            outline:1px solid #f4b400;
+             box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+           }
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .light-mode .sheet {
+            background-color: #fff;
+        }
+        .light-mode th {
+            background-color: #e0e0e0;
+            color: #d97706;
+        }
+        .light-mode td {
+            background-color: #f9f9f9;
+        }
+        .light-mode td:hover {
+            background-color: #e0e0e0;
+        }
+        .light-mode .progress-bar {
+            background-color: #ccc;
+        }
+        .light-mode .logo {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .timer {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="indecx1.html"><img src="logo.png" alt="Logo"/></a>
+        <span class="initial">L</span>
+        <span class="text">earn</span>
+        <span class="initial">P</span>
+        <span class="text">ro</span>
+      </div>
+    <button class="mode-toggle" onclick="toggleMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="container">
+        <h1>JavaLearning Sheet</h1>
+        <div class="timer-container">
+            <div class="timer" id="timer">Time Elapsed: 00:00:00</div>
+            <button class="stop-timer" onclick="stopTimer()">Stop Timer</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">Done</th>
+                        <th style="width: 25%;">Topic</th>
+                        <th style="width: 45%;">Description</th>
+                        <th style="width: 25%;">Resources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Java Basics</td>
+                            <td>Learn variables, data types (int, String), and operators.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=eIrMbAQSU34" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Control Flow</td>
+                            <td>Use if-else, switch, and loops (for, while).</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_conditions.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=5-7_8K0qh_A" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Methods</td>
+                            <td>Define methods with parameters and return types.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8cm1x4bC610" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">OOP in Java</td>
+                            <td>Understand classes, objects, and inheritance.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_oop.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=A8gXDH6QdIs" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Arrays</td>
+                            <td>Use single and multi-dimensional arrays.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=1pX2sEYuoeQ" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Strings</td>
+                            <td>Manipulate strings with String class.</td>
+                            <td><i class="fas fa-code resource-icon"></i><a href="https://www.w3schools.com/java/java_strings.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=9zL-Mp3Z0Zk" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Exception Handling</td>
+                            <td>Use try, catch, and finally.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=NhT7hWStSUw" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Collections Framework</td>
+                            <td>Use ArrayList, HashMap, etc.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_collections.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8g-6Yf1j_Gw" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">File I/O</td>
+                            <td>Read/write files with File class.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/essential/io/" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=ZxhcHGolhLA" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Interfaces</td>
+                            <td>Define and implement interfaces.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_interface.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=6G-WcR3oT8o" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Abstract Classes</td>
+                            <td>Use abstract classes and methods.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=4D8R0s2v3vQ" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Generics</td>
+                            <td>Create type-safe generic classes.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_generics.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=K1iu1kXkVoA" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Multithreading</td>
+                            <td>Use Thread class and Runnable interface.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8SYNY_FnxQ" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Synchronization</td>
+                            <td>Handle thread safety with synchronized.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_threads.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=RhNuCM21q8" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Lambda Expressions</td>
+                            <td>Use lambdas with functional interfaces.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=tj5sLSFjVj4" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Stream API</td>
+                            <td>Process collections with streams.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_stream.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=t1-YZ6bF-g0" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">JavaFX Basics</td>
+                            <td>Create GUI with JavaFX.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm" target="_blank">JavaFX Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=FLkOX4Eez6o" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Networking</td>
+                            <td>Use sockets for network programming.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_networking.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=ZIzoesrL2vY" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">JDBC</td>
+                            <td>Connect to databases with JDBC.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/" target="_blank">Java Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=7NMSUQmr_Sk" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Annotations</td>
+                            <td>Use built-in and custom annotations.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.w3schools.com/java/java_annotations.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=6u5hQebQodY" target="_blank">Video</a></td>
+                        </tr>
+                    </tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let seconds = 0;
+        let timerStarted = false;
+        let timerInterval = null;
+
+        function updateTimer() {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            document.getElementById('timer').textContent = `Time Elapsed: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (!timerStarted) {
+                timerStarted = true;
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function stopTimer() {
+            if (timerStarted && timerInterval) {
+                clearInterval(timerInterval);
+                timerStarted = false;
+            }
+        }
+
+        document.querySelectorAll('.topic-title').forEach(topic => {
+            topic.addEventListener('click', startTimer);
+        });
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = document.querySelectorAll('.checkbox:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            const button = document.querySelector('.mode-toggle');
+            const icon = button.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
