@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning Sheet </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .logo {
+            font-family: "Kinescope", cursive; 
+            font-size: 2.5rem; 
+             color: #f4b400; 
+             background-color: rgba(31, 31, 31, 0.9); 
+             padding: 5px 10px;
+             display: inline-block;
+             border-radius: 5px; 
+              transition: background 0.3s ease; 
+          }
+
+         .logo:hover {
+           background-color: rgba(31, 31, 31, 1); 
+           } 
+           .initial {
+         font-weight: bold;
+           text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 165, 0, 0.7); /
+          }
+
+          .text {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 8px rgba(255, 165, 0, 0.5); 
+             }
+         .initial {
+           margin-right: -2px; 
+             }
+           .text{
+
+             margin-left: -2px;
+              }
+           .logo img {
+            width: 40px; 
+            height: auto;
+           margin-right: 10px; 
+            vertical-align: middle;
+            border-radius: 10px;
+             }
+             .logo img:hover{
+            outline:1px solid #f4b400;
+             box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+           }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f0b400;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: #58a6ff;
+        }
+        .stop-timer {
+            background-color: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stop-timer:hover {
+            background-color: #cc0000;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #21262d;
+            height: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #58a6ff;
+            transition: width 0.5s;
+        }
+        .sheet {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #21262d;
+        }
+        th {
+            background-color: #21262d;
+            color: #f0b400;
+            font-size: 1.2em;
+        }
+        td {
+            background-color: #1c2526;
+            transition: background-color 0.3s;
+        }
+        td:hover {
+            background-color: #2d333b;
+          
+        }
+        .checkbox {
+            margin-right: 10px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .topic-title {
+            font-weight: bold;
+            color: #c9d1d9;
+            cursor: pointer;
+        }
+        .resource-icon {
+            margin-right: 5px;
+        }
+        .youtube-icon {
+            color: #ff0000;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #58a6ff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .mode-toggle:hover {
+            background-color: #1f6feb;
+        }
+      
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .light-mode .sheet {
+            background-color: #fff;
+        }
+        .light-mode th {
+            background-color: #e0e0e0;
+            color: #d97706;
+        }
+        .light-mode td {
+            background-color: #f9f9f9;
+        }
+        .light-mode td:hover {
+            background-color: #e0e0e0;
+        }
+        .light-mode .progress-bar {
+            background-color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .timer {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="logo">
+    <a href="indecx1.html"><img src="logo.png" alt="Logo"/></a>
+    <span class="initial">L</span>
+    <span class="text">earn</span>
+    <span class="initial">P</span>
+    <span class="text">ro</span>
+  </div>
+    <button class="mode-toggle" onclick="toggleMode()">
+        <i class="fas fa-moon"></i> 
+    </button>
+    <div class="container">
+        <h1>Python Learning Sheet</h1>
+        <div class="timer-container">
+            <div class="timer" id="timer">Time Elapsed: 00:00:00</div>
+            <button class="stop-timer" onclick="stopTimer()">Stop Timer</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">Done</th>
+                        <th style="width: 25%;">Topic</th>
+                        <th style="width: 45%;">Description</th>
+                        <th style="width: 25%;">Resources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Python Basics</td>
+                        <td>Learn variables, data types (int, str, float), and operators.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=kqtD5dpn9C8" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Control Flow</td>
+                        <td>Understand if-else, while, and for loops.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/python-conditional-statements/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=6iF8Xb7Z3wQ" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Functions</td>
+                        <td>Define reusable code with parameters and return values.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://www.programiz.com/python-programming/function" target="_blank">Programiz</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=NE97ylAnrz4" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">OOP Concepts</td>
+                        <td>Learn classes, objects, inheritance, and polymorphism.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/python3-object-oriented-programming/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=Ej_02ICOIgs" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Data Structures</td>
+                        <td>Explore lists, tuples, sets, and dictionaries.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=pkYVOmU3MgA" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">String Manipulation</td>
+                        <td>Work with string methods, slicing, and formatting.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://www.w3schools.com/python/python_strings.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=k9TUPpGqYTo" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">File Handling</td>
+                        <td>Read from and write to files using Python.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=Uh2ebFW8OYM" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Exception Handling</td>
+                        <td>Use try, except, and finally to manage errors.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/python-exceptions/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=NIWwJbo-9_8" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Modules & Packages</td>
+                        <td>Import and create reusable Python modules.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/tutorial/modules.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=UIinZGIuCPI" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">List Comprehensions</td>
+                        <td>Write concise list operations with comprehensions.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://www.w3schools.com/python/python_lists_comprehension.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=AhSvKGTh28Q" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Lambda Functions</td>
+                        <td>Use anonymous functions with lambda.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/python-lambda/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=hYzwCs6lEig" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Iterators & Generators</td>
+                        <td>Understand iterables, iterators, and yield.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/tutorial/classes.html#iterators" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=vnNhxfHOD2s" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Decorators</td>
+                        <td>Modify functions/classes with decorators.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/primer-on-python-decorators/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=FsAPt_9Bf3U" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Regular Expressions</td>
+                        <td>Use regex for pattern matching in strings.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://docs.python.org/3/library/re.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=sHw5hLYFaIw" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Working with Dates</td>
+                        <td>Handle dates and times with datetime module.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/library/datetime.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=eirjjyP2qcQ" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Multithreading</td>
+                        <td>Run concurrent tasks with threading.</td>
+                        <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://realpython.com/intro-to-python-threading/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=IEEhzQoKtQU" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Multiprocessing</td>
+                        <td>Use multiple processes for parallelism.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://docs.python.org/3/library/multiprocessing.html" target="_blank">Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=fKl2JW_qrso" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Working with APIs</td>
+                        <td>Fetch data from APIs using requests.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://realpython.com/python-requests/" target="_blank">Real Python</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=tb8gHvYlCFs" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">NumPy Basics</td>
+                        <td>Work with arrays and numerical operations.</td>
+                        <td><i class="fas fa-book resource-icon"></i><a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank">NumPy Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=QUT1V6a_zJs" target="_blank">Video</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                        <td class="topic-title">Pandas Basics</td>
+                        <td>Manipulate data with DataFrames.</td>
+                        <td><i class="fas fa-code resource-icon"></i><a href="https://pandas.pydata.org/docs/getting_started/index.html" target="_blank">Pandas Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=vmEHCJofslg" target="_blank">Video</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+       
+        let seconds = 0;
+        let timerStarted = false;
+        let timerInterval = null;
+
+        function updateTimer() {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            document.getElementById('timer').textContent = `Time Elapsed: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (!timerStarted) {
+                timerStarted = true;
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function stopTimer() {
+            if (timerStarted && timerInterval) {
+                clearInterval(timerInterval);
+                timerStarted = false;
+            }
+        }
+        document.querySelectorAll('.topic-title').forEach(topic => {
+            topic.addEventListener('click', startTimer);
+        });
+
+      
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = document.querySelectorAll('.checkbox:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            const button = document.querySelector('.mode-toggle');
+            const icon = button.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
