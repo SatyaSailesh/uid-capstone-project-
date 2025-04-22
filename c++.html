@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Learning Sheet </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f0b400;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: #58a6ff;
+        }
+        .stop-timer {
+            background-color: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stop-timer:hover {
+            background-color: #cc0000;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #21262d;
+            height: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #58a6ff;
+            transition: width 0.5s;
+        }
+        .sheet {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #21262d;
+        }
+        th {
+            background-color: #21262d;
+            color: #f0b400;
+            font-size: 1.2em;
+        }
+        td {
+            background-color: #1c2526;
+            transition: background-color 0.3s;
+        }
+        td:hover {
+            background-color: #2d333b;
+        }
+        .checkbox {
+            margin-right: 10px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .topic-title {
+            font-weight: bold;
+            color: #c9d1d9;
+            cursor: pointer;
+        }
+        .resource-icon {
+            margin-right: 5px;
+        }
+        .youtube-icon {
+            color: #ff0000;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #58a6ff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .mode-toggle:hover {
+            background-color: #1f6feb;
+        }
+        .initial {
+         font-weight: bold;
+           text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 165, 0, 0.7); 
+          }
+
+          .text {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 8px rgba(255, 165, 0, 0.5); 
+             }
+         .initial {
+           margin-right: -2px; 
+             }
+           .text{
+
+             margin-left: -2px;
+              }
+        .logo {
+            font-family: "Kinescope", cursive; 
+            font-size: 2.5rem;
+             color: #f4b400; 
+             background-color: rgba(31, 31, 31, 0.9);
+             padding: 5px 10px;
+             display: inline-block;
+             border-radius: 5px; 
+              transition: background 0.3s ease; 
+          }
+
+         .logo:hover {
+           background-color: rgba(31, 31, 31, 1); 
+           } 
+           .logo img {
+            width: 40px; 
+            height: auto;
+           margin-right: 10px; 
+            vertical-align: middle;
+            border-radius: 10px;
+             }
+             .logo img:hover{
+            outline:1px solid #f4b400;
+             box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+           }
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .light-mode .sheet {
+            background-color: #fff;
+        }
+        .light-mode th {
+            background-color: #e0e0e0;
+            color: #d97706;
+        }
+        .light-mode td {
+            background-color: #f9f9f9;
+        }
+        .light-mode td:hover {
+            background-color: #e0e0e0;
+        }
+        .light-mode .progress-bar {
+            background-color: #ccc;
+        }
+        .light-mode .logo {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .timer {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="indecx1.html"><img src="logo.png" alt="Logo"/></a>
+        <span class="initial">L</span>
+        <span class="text">earn</span>
+        <span class="initial">P</span>
+        <span class="text">ro</span>
+      </div>
+    
+    <button class="mode-toggle" onclick="toggleMode()">
+        <i class="fas fa-moon"></i> 
+    </button>
+    <div class="container">
+        <h1>C++ Learning Sheet</h1>
+        <div class="timer-container">
+            <div class="timer" id="timer">Time Elapsed: 00:00:00</div>
+            <button class="stop-timer" onclick="stopTimer()">Stop Timer</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">Done</th>
+                        <th style="width: 25%;">Topic</th>
+                        <th style="width: 45%;">Description</th>
+                        <th style="width: 25%;">Resources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">C++ Basics</td>
+                            <td>Learn variables, data types (int, double), and operators.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/variables/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Control Structures</td>
+                            <td>Use if-else, switch, and loops (for, while).</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/control-flow-introduction/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=RBvW8t9TDXM" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Functions</td>
+                            <td>Define functions with parameters and return types.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/functions/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=QN9hnmAgmOc" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">OOP in C++</td>
+                            <td>Understand classes, objects, and inheritance.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/classes-and-class-members/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=wN0x9eZLix4" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Pointers</td>
+                            <td>Work with pointers and memory addresses.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/pointers/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=2GDiMM7JME8" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Arrays</td>
+                            <td>Use static and dynamic arrays.</td>
+                            <td><i class="fas fa-code resource-icon"></i><a href="https://www.w3schools.com/cpp/cpp_arrays.asp" target="_blank">W3Schools</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v= BID5h7LprY" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Strings</td>
+                            <td>Manipulate strings with std::string.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/reference/string/string/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8jLOx1hD3_o" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">File Handling</td>
+                            <td>Read/write files using fstream.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/input-and-output-with-files/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=Iho2EdJgusU" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Exception Handling</td>
+                            <td>Use try, catch for error management.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/exceptions/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8kPqWftHz8w" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Templates</td>
+                            <td>Create generic functions and classes.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/function-templates/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=I-hZkUa9mIs" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">STL Containers</td>
+                            <td>Use vector, map, set, etc.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/reference/stl/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=9Q7Qf3DyK4Q" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">STL Algorithms</td>
+                            <td>Apply sort, find, and other algorithms.</td>
+                            <td><i class="fas fa-code resource-icon"></i><a href="https://www.cplusplus.com/reference/algorithm/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=2_xs9V0l2k" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Smart Pointers</td>
+                            <td>Use unique_ptr, shared_ptr for memory management.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/smart-pointers/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=UOB7-B2MGGw" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Multithreading</td>
+                            <td>Use std::thread for concurrency.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/reference/multithreading/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=LL8wkskDlbs" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Operator Overloading</td>
+                            <td>Customize operators for classes.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/operator-overloading/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=mS9755gF66w" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Dynamic Memory</td>
+                            <td>Manage memory with new and delete.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/dynamic/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=YnWhqhNdYyk" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Namespaces</td>
+                            <td>Organize code with namespaces.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/namespaces/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=4LYvM8IpD9E" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Lambda Expressions</td>
+                            <td>Use lambdas for inline functions.</td>
+                            <td><i class="fas fa-book resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/lambdas/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=mWgmBBz0y8c" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Preprocessor Directives</td>
+                            <td>Use #include, #define, etc.</td>
+                            <td><i class="fas fa-code resource-icon"></i><a href="https://www.cplusplus.com/doc/tutorial/preprocessor/" target="_blank">C++ Docs</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=8tWguBTMhUw" target="_blank">Video</a></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" onchange="updateProgress()"></td>
+                            <td class="topic-title">Standard I/O</td>
+                            <td>Handle input/output with cin, cout.</td>
+                            <td><i class="fas fa-graduation-cap resource-icon"></i><a href="https://www.learncpp.com/cpp-tutorial/basic-input-output/" target="_blank">LearnCpp</a> | <i class="fab fa-youtube youtube-icon"></i><a href="https://www.youtube.com/watch?v=FFDF4xWnxMw" target="_blank">Video</a></td>
+                        </tr>
+                    </tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let seconds = 0;
+        let timerStarted = false;
+        let timerInterval = null;
+
+        function updateTimer() {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            document.getElementById('timer').textContent = `Time Elapsed: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (!timerStarted) {
+                timerStarted = true;
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function stopTimer() {
+            if (timerStarted && timerInterval) {
+                clearInterval(timerInterval);
+                timerStarted = false;
+            }
+        }
+
+        document.querySelectorAll('.topic-title').forEach(topic => {
+            topic.addEventListener('click', startTimer);
+        });
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = document.querySelectorAll('.checkbox:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            const button = document.querySelector('.mode-toggle');
+            const icon = button.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
