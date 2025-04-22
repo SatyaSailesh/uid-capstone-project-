@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnPro+ Payment / Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #e0e0e0; 
+            background: linear-gradient(135deg, #1a1d23, #2c2f36); 
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* Top Navbar */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(31, 31, 31, 0.9); 
+            padding: 5px 10px;
+            color: #ffffff; 
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+        }
+
+        .logo {
+            font-family: "Kinescope", cursive; 
+            font-size: 2.5rem;
+            color: #f4b400; 
+            background-color: rgba(31, 31, 31, 0.9);
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .logo:hover {
+            background-color: rgba(31, 31, 31, 1);
+        }
+
+        .initial {
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 165, 0, 0.7);
+        }
+
+        .text {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 8px rgba(255, 165, 0, 0.5);
+        }
+
+    
+        .payment-main-content {
+            margin-top: 70px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px); 
+        }
+
+       
+        .payment-container {
+            background: #1f1f1f; 
+            padding: 40px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 600px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .payment-container:hover {
+            transform: scale(1.05);
+            outline: 1px solid #f4b400;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Heading */
+        .payment-container h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Subheading */
+        .payment-container p.subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styles */
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: #2c2f36;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border: 1px solid #f4b400;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            outline: none;
+        }
+
+        /* Payment Options */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            background: #2c2f36;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background: #333;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        .payment-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .payment-option label {
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: #ff9800; 
+            border: none;
+            padding: 15px;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #e68a00; 
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .info-section p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .payment-container h1 {
+                font-size: 2rem;
+            }
+
+            .payment-container p.subtitle {
+                font-size: 1rem;
+            }
+
+            .payment-option {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="top-navbar">
+        <div class="logo">
+            <span class="initial">L</span><span class="text">earn</span>
+            <span class="initial">P</span><span class="text">ro+</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="payment-main-content">
+        <div class="payment-container">
+            <h1>LearnPro+ Subscription</h1>
+            <p class="subtitle">Unlock premium features with LearnPro+</p>
+
+            <!-- Form -->
+            <form class="payment-form">
+                <!-- Registration Fields -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Payment Options -->
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <input type="radio" id="monthly" name="plan" value="monthly" checked>
+                        <label for="monthly">Monthly - 999.99</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="yearly" name="plan" value="yearly">
+                        <label for="yearly">Yearly - 9999.99 (Save 20%)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="card">Card Number</label>
+                    <input type="text" id="card" placeholder="1234 5678 9012 3456" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Subscribe Now</button>
+            </form>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2>Why Choose LearnPro+?</h2>
+                <p>Enjoy unlimited access to premium courses, exclusive content, and personalized learning tools.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector(".payment-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents form submission (for demo)
+        alert("Payment Successful! You have subscribed to LearnPro+.");
+    });
+</script>
