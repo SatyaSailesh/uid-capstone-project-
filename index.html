@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn Programming Languages</title>
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -14,13 +14,12 @@
       <i class="fas fa-bars"></i>
     </div>
    <div class="logo">
-  <img src="logo1.png" alt="Logo" />
+  <a href="indecx1.html"><img src="logo.png" alt="Logo" /></a>
   <span class="initial">L</span>
   <span class="text">earn</span>
   <span class="initial">P</span>
   <span class="text">ro</span>
 </div>
-
 
     <div class="user-profile" id="user-profile">
       <img src="profile.png" alt="User">
@@ -29,33 +28,31 @@
         <div class="profile-info">
           <h3>Satya Sailesh</h3>
           <p>Hi,Satya Sai Sailesh</p>
-          <button>Edit Profile</button>
+          <a href="profile.html">
+          <button>Profile</button>
+        </a>
         </div>
-
         <!-- Progress Stats -->
         <div class="progress-stats">
-          <h4>tasks completed</h4>
-          <h4>lectures completed: 1</h4>
-         
+          <h3>TASKS COMPLETED</h3>
+          <h4>lectures completed: 20</h4>
         </div>
-
         <!-- Badges Section -->
         <div class="badges-section">
           <h4>Badges</h4>
           <p>Locked Badge: learnpro Challenge</p>
         </div>
-
         <!-- Activity Section -->
         <div class="activity-section">
           <h4>Activity</h4>
-          <p>7 topics covered </p>
-          <p>Total active days: 3</p>
+          <p>15 topics covered </p>
+          <p>Total active days: 7</p>
           <p>Max streak: 2</p>
           <div class="monthly-activity">
             <h5>Monthly Activity</h5>
             <div class="month-grid">
               <div class="month">Mar</div>
-              <div class="month">Apr</div>
+              <div class="month active">Apr</div>
               <div class="month">May</div>
               <div class="month">Jun</div>
               <div class="month">Jul</div>
@@ -72,7 +69,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Side Navbar -->
   <aside class="side-navbar" id="side-navbar">
     <div class="profile-section">
@@ -80,35 +76,32 @@
       <h3>Kotla Satya Sai Sailesh</h3>
       <p>Beginner</p>
     </div>
-
     <ul class="nav-links">
-      <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+      <li><a href="p1.html"><i class="fas fa-user"></i> Profile</a></li>
       <li class="dropdown">
-        <a href="#"><i class="fas fa-book"></i> Blogs <i class="fas fa-chevron-down"></i></a>
+        <a href="#"><i class="fas fa-book"></i> Blogs </a>
         <ul class="dropdown-content">
-          <li><a href="#">python sheet</a></li>
-          <li><a href="#">java sheet</a></li>
-          <li><a href="#">c++ sheet</a></li>
-          <li><a href="#">important programs sheet</a></li>
+          <li><a href="python.html">python sheet</a></li>
+          <li><a href="java.html">java sheet</a></li>
+          <li><a href="c++.html">c++ sheet</a></li>
         </ul>
       </li>
-      <li><a href="#"><i class="fas fa-save"></i> Saved Notes</a></li>
+      <li><a href="p1.html"><i class="fas fa-chart-line"></i> My Progress</a></li>
     </ul>
-
     <div class="upgrade-section">
-      <button class="upgrade-btn"><i class="fas fa-crown"></i> Upgrade to Plus</button>
+      <a href="lp+.html"><button class="upgrade-btn"><i class="fas fa-crown"></i> Upgrade to Plus</button></a>
     </div>
-
     <!-- Progress Bar -->
     <div class="progress-section">
       <h4>Your Progress</h4>
       <div class="progress-bar">
-        <div class="progress" style="width: 60%;"></div>
+        <a href="p1.html">
+        <div class="progress" style="width: 60%;"></div></a>
       </div>
-      <p>60% Completed</p>
+      
+      <p>40% Completed</p>
     </div>
   </aside>
-
   <!-- Main Content -->
   <div class="main-content" id="main-content">
     <header>
@@ -116,55 +109,87 @@
       <p>Master the skills you need to become a pro developer!</p>
     </header>
 <div class="enhance-learning">
-    <h2>Enhance your learning experience by taking LP LearnPro+</h2>
-    <button class="explore-button">Explore Plus</button>
+    <h2>Enhance your learning experience by taking LearnPro+</h2>
+   <a href="whylp+.html"> <button class="explore-button">Explore Plus</button></a>
 </div>
-
     <!-- Language Grid -->
     <section class="languages">
       <h2>Choose a Language to Learn</h2>
       <div class="language-grid">
         <div class="language-card">
-          <i class="fab fa-python"></i>
+          <i class="fab fa-python"style="color: #3776AB;"></i>
           <h3>Python</h3>
           <p>Start with Python basics.</p>
-          <button>Start Learning</button>
+          <a href="python.html">
+            <button>Start Learning</button>
+        </a>        
         </div>
         <div class="language-card">
-          <i class="fab fa-js-square"></i>
+          <i class="fab fa-js-square"style="color: #F7DF1E;"></i>
           <h3>JavaScript</h3>
           <p>Master the web with JS.</p>
-          <button>Start Learning</button>
+          <a href="js.html">
+            <button>Start Learning</button>
+        </a>  
         </div>
         <div class="language-card">
-          <i class="fab fa-html5"></i>
+          <i class="fab fa-html5"style="color: #E34F26;"></i>
           <h3>HTML & CSS</h3>
           <p>Build beautiful websites.</p>
-          <button>Start Learning</button>
+          <a href="html.html">
+            <button>Start Learning</button>
+        </a>  
         </div>
         <!-- Add more languages here -->
         <div class="language-card">
-            <i class="fab fa-java"></i>
+            <i class="fab fa-java"style="color: #007396;"></i>
             <h3>java</h3>
             <p>start with java basics.</p>
-            <button>Start Learning</button>
+            <a href="java.html">
+              <button>Start Learning</button>
+          </a>  
           </div>
           <div class="language-card">
-            <i class="fab fa-c"></i>
+            <i class="fab fa-c" style="color: #A8B9CC;"></i>
             <h3>c programming</h3>
             <p>start with c basics.</p>
-            <button>Start Learning</button>
+            <a href="c.html">
+              <button>Start Learning</button>
+          </a>  
           </div>
-
+          <div class="language-card">
+            <i class="fas fa-code" style="color: #00599C;"></i>
+            <h3>C++</h3>
+            <p>Start with C++ basics.</p>
+            <a href="c++.html">
+              <button>Start Learning</button>
+            </a>
+          </div>
+      </div>
+    </section>
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+      <h1>WHY CHOOSE US?</h1>
+      <p class="subtitle">Unlock Your Potential with Our Comprehensive Learning Approach</p>
+      <div class="features">
+        <div class="feature-card">
+          <h2>01</h2>
+          <h3>Expert-Crafted Learning</h3>
+          <p>Our team of accomplished engineers, with impressive coding profiles across various programming platforms, hails from top tech companies like Google, Amazon, Meta, and Microsoft. They also boast a proven track record of successful teaching.</p>
+        </div>
+        <div class="feature-card">
+          <h2>02</h2>
+          <h3>Structured Learning Path</h3>
+          <p>Master all programming languages and practical projects – all through premium blog posts and in-depth video solutions.</p>
+        </div>
+        <div class="feature-card">
+          <h2>03</h2>
+          <h3>Unmatched Content Depth</h3>
+          <p>We prioritize quality content, offering in-depth explanations and a wide range of solved problems in both free and paid courses. Our focus is on developing problem-solving skills through intuitive video explanations.</p>
+        </div>
       </div>
     </section>
   </div>
-
-  <!-- Loading Animation -->
-  <div class="loader">
-    <div class="spinner"></div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
